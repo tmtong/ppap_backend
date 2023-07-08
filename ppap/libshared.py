@@ -61,7 +61,9 @@ lifekey = b'hcMlHuPVHOk3RIH24wFeYABiuP6O20TEqtlZI3SQUS0='  # use to encrypt hn
 #################################
 dbversion = "v002"
 dbipaddr = ""
-
+#################################
+livekitapikey = 'APIGJxhQCPFTK3P'
+livekitsecret = 'j6o9boTiE92YzAw0ONX2DLYOiHalrDHq20A52xUwgVL'
 
 #################################
 def isfloat(value):
@@ -144,70 +146,21 @@ log("libshared: hostid is " + hostid + ", osname is " + osname)
 
 
 
-driver_path = None
-linuxwebdocspath = None
-with open('./sec/terence.epr.sec') as f:
-    lines = f.readlines()
-    cms_username = lines[0].rstrip()
-    cms_password = lines[1].rstrip()
-cms_proxy_server = 'proxy.ha.org.hk'
-cms_proxy_port = '8080'
-ha_proxy_str = 'http://' + cms_username + ':' + cms_password + '@' + cms_proxy_server + ':' + cms_proxy_port
-ha_no_proxy_str = 'enquiry.epr.ha.org.hk,ailab-api-trim-app-ailab-corp-web-dev-1.cldpaast71.server.ha.org.hk,tmh.home,ntwc.home,ntwccorpis01,haho-webmail,ha.home,epr.home,tmhicupc022,tmhicupc018,poh-icu05,tmhicupc023,localhost,127.0.0.1,ivm-home.server.ha.org.hk,epr-gateway-cms-epr-prd.cldpaasp61.server.ha.org.hk,epr-gateway-cms-epr-prd.cldpaasp71.server.ha.org.hk,*.server.ha.org.hk'
-
-
 # For home
 if osname == "Linux" and hostid == 'homelaptop':
     download_directory = os.getcwd() + '/temp/'
     bushost = "127.0.0.1"
-    busport = 8801
+    busport = 1801
     dbipaddr = "127.0.0.1"
     hostplatform = 'home'
     ha_computer = False
-
-
-
-# For production
-elif osname == "Linux" and hostid == 'tmhicupc022':
-    download_directory = os.getcwd() + '/temp/'
-    bushost = "127.0.0.1"
-    dbipaddr = "127.0.0.1"
-    hostplatform = 'tmhicupc022-docker'
-    ha_computer = True
-
-
-# For TMH
-elif osname == "Linux" and hostid == 'tmhicupc018':
-    download_directory = os.getcwd() + '/temp/'
-    bushost = "127.0.0.1"  # May need tmhicupc018
-    dbipaddr = "127.0.0.1"
-    hostplatform = 'tmhicupc018-docker'
-    ha_computer = True
-
-
-elif osname == "Linux" and hostid == 'tmhicupc023':
-    download_directory = os.getcwd() + '/temp/'
-    bushost = "127.0.0.1"  # May need tmhicupc018
-    dbipaddr = "127.0.0.1"
-    hostplatform = 'tmhicupc018-docker'
-    ha_computer = True
-
-
-# For POH
-elif osname == "Linux" and hostid == 'poh-icu05':
-    download_directory = os.getcwd() + '/temp/'
-    bushost = "127.0.0.1"  # May need tmhicupc018
-    dbipaddr = "127.0.0.1"
-    hostplatform = 'tmhicupc018-docker'
-    ha_computer = True
-
 
 
 # cygwin
 elif 'cygdrive' in pythondir:
     pythondir = re.sub(r'/cygdrive/(\w)/', r'\1:\\', pythondir)
     pythondir = re.sub(r'/', r'\\', pythondir)
-    download_directory = 'C:\\Users\\tmc877\\Documents\\mimo_backend\\temp'
+    download_directory = 'C:\\Users\\tmc877\\Documents\\ppap_backend\\temp'
     bushost = "127.0.0.1"
     dbipaddr = "127.0.0.1"
     hostplatform = 'cygwin'  # vscode, windows
@@ -215,7 +168,7 @@ elif 'cygdrive' in pythondir:
 
 else:  # for vs code
     # need to be in downloads, not temp
-    download_directory = 'C:\\Users\\tmc877\\Documents\\mimo_backend\\temp'
+    download_directory = 'C:\\Users\\tmc877\\Documents\\ppap_backend\\temp'
     bushost = "127.0.0.1"
     dbipaddr = "127.0.0.1"
     hostplatform = 'vscode'
