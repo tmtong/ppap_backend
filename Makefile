@@ -18,8 +18,6 @@ gitrcommit:
 	-git commit -a -m "`date`"
 	git pull --no-rebase
 	git push origin HEAD
-	mkdir -p data/selfdiagnostics
-	cp -r data/selfdiagnostics_backup/* data/selfdiagnostics/
 
 gitrupdate:
 	git config --global http.sslVerify false
