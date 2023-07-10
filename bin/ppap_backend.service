@@ -1,0 +1,13 @@
+[Unit]
+# Human readable name of the unit
+Description=PPAP Backend Service
+
+
+[Service]
+Environment=PYTHONUNBUFFERED=1
+# Command to execute when the service is started
+ExecStart=/usr/bin/bash -c 'cd /home/tmtong/Documents/ppap_backend/ && source .venv38/bin/activate && make autostart'
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

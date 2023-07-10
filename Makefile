@@ -1,5 +1,15 @@
 .PHONY: docs mongodump
 
+
+autostart:
+	-pkill -f "python ppap/wsbus.py" > /dev/null 2>&1
+	-pkill -f "python ppap/main.py" > /dev/null 2>&1
+	python ppap/wsbus.py &
+	python ppap/main.py
+
+autostartlog:
+	sudo systemctl status ppap_backend
+
 wsbus:
 	-pkill -f "python ppap/wsbus.py" > /dev/null 2>&1
 	./bin/log.sh wsbus ppap/wsbus.py

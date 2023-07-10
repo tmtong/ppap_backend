@@ -154,6 +154,14 @@ if osname == "Linux" and hostid == 'homelaptop':
     dbipaddr = "127.0.0.1"
     hostplatform = 'home'
     ha_computer = False
+# For home
+if osname == "Linux" and hostid == 'ppapserver':
+    download_directory = os.getcwd() + '/temp/'
+    bushost = "127.0.0.1"
+    busport = 1801
+    dbipaddr = "127.0.0.1"
+    hostplatform = 'ppapserver'
+    ha_computer = False
 
 
 # cygwin
